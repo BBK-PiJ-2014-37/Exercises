@@ -3,9 +3,6 @@
  int j = 0
  int l = s.length()
  while (j < l) {
- 	if (s[j] == " ") {
- 		println s.substring(0,j)
- 		s = s.substring(j+1,l-1)
- 	}
+ 	println s[j]
  	j++
  }
