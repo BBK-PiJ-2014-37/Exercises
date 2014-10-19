@@ -4,18 +4,19 @@ while (!fin) {
   String s = System.console().readLine()
   fin = s == ""
   if (!fin) {
-    int j = 0
-    int l = s.size()
-    boolean maybe = true
-    while (maybe && j < l/2) {
-      if (s[j] != s[l-j]) {
+    int i = 0
+    int j = s.length()-1
+    boolean isPalindrome = true
+    while (isPalindrome && i < s.length()/2) {
+      if (s[i] != s[j]) {
         println "Nope!"
-        maybe = false
+        isPalindrome = false
       }
-      if (maybe) {
+      i++
+      j--
+    }
+    if (isPalindrome) {
         println "Yes!!!!"
-      }
-      j = j + 1
     }
   }
 }

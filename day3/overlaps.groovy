@@ -1,4 +1,4 @@
-// Do I need to change the upleft to upLeft1? Are these variables, fields, methods????
+class Point {
 	double x
 	double y
 }
@@ -6,48 +6,71 @@ class Rectangle {
 	Point upLeft
 	Point downRight
 }
+
+boolean isInside(Rectangle rect, Point a){
+	if ((a.x < rect.downRight.x) && (a.x > rect.upLeft.x) && (a.y < rect.upLeft.y) && (a.y > rect.downRight.y)) {
+		return true
+	} else {
+		return false
+	}
+}
+
 Rectangle rectangle1 = new Rectangle()
+
 rectangle1.upLeft = new Point()
-println "Please enter the value for x at upLeft point, for rectangle 1: "
-String strx1 = System.console().readLine()
-upLeft1.x = Double.parseDouble(strx1)
-println "Please enter the value for y at upLeft point, for rectangle 1: "
-String stry1 = System.console().readLine()
-upLeft1.y = Double.parseDouble(stry1)
+println "Please enter the value for x at point 1: "
+rectangle1.upLeft.x = Double.parseDouble(System.console().readLine())
+println "Please enter the value for y at point 1: "
+rectangle1.upLeft.y = Double.parseDouble(System.console().readLine())
+
 rectangle1.downRight = new Point()
-println "Please enter the value for x at downRight point, for rectangle 1: "
-String strx2 = System.console().readLine()
-downRight1.x = Double.parseDouble(strx2)
-println "Please enter the value for y at downRight point, for rectangle 1: "
-String stry2 = System.console().readLine()
-downRight1.y = Double.parseDouble(stry2)
+println "Please enter the value for x at point 2: "
+rectangle1.downRight.x = Double.parseDouble(System.console().readLine())
+println "Please enter the value for y at point 2: "
+rectangle1.downRight.y = Double.parseDouble(System.console().readLine())
 
 Rectangle rectangle2 = new Rectangle()
+
 rectangle2.upLeft = new Point()
-println "Please enter the value for x at upLeft point, for rectangle 2: "
-String strx3 = System.console().readLine()
-upLeft2.x = Double.parseDouble(strx3)
-println "Please enter the value for y at upLeft point, for rectangle 2: "
-String stry3 = System.console().readLine()
-upLeft2.y = Double.parseDouble(stry3)
-rectangle1.downRight = new Point()
-println "Please enter the value for x at downRight point, for rectangle 2: "
-String strx4 = System.console().readLine()
-downRight2.x = Double.parseDouble(strx4)
-println "Please enter the value for y at downRight point, for rectangle 2: "
-String stry4 = System.console().readLine()
-downRight2.y = Double.parseDouble(stry4)
+println "Please enter the value for x at point 1: "
+rectangle2.upLeft.x = Double.parseDouble(System.console().readLine())
+println "Please enter the value for y at point 1: "
+rectangle2.upLeft.y = Double.parseDouble(System.console().readLine())
+
+rectangle2.downRight = new Point()
+println "Please enter the value for x at point 2: "
+rectangle2.downRight.x = Double.parseDouble(System.console().readLine())
+println "Please enter the value for y at point 2: "
+rectangle2.downRight.y = Double.parseDouble(System.console().readLine())
+
+Rectangle rectangle3 = new Rectangle()
+
+rectangle3.upLeft = new Point()
+println "Please enter the value for x at point 1: "
+rectangle3.upLeft.x = Double.parseDouble(System.console().readLine())
+println "Please enter the value for y at point 1: "
+rectangle3.upLeft.y = Double.parseDouble(System.console().readLine())
+
+rectangle3.downRight = new Point()
+println "Please enter the value for x at point 2: "
+rectangle3.downRight.x = Double.parseDouble(System.console().readLine())
+println "Please enter the value for y at point 2: "
+rectangle3.downRight.y = Double.parseDouble(System.console().readLine())
 
 Point otherpoint = new Point()
 println "Please enter the value for x at point 3: "
-String strx5 = System.console().readLine()
-otherpoint.x = Double.parseDouble(strx5)
+otherpoint.x = Double.parseDouble(System.console().readLine())
 println "Please enter the value for y at point 3: "
-String stry5 = System.console().readLine()
-otherpoint.y = Double.parseDouble(stry5)
+otherpoint.y = Double.parseDouble(System.console().readLine())
 
-if ((otherpoint.x < downRight1.x) && (otherpoint.x > upLeft1.x) && (otherpoint.y < upLeft1.y) && (otherpoint.y > downRight1.y)) {
-	println "The point falls inside the rectangle 1"
-} else {
-	println "The point falls outside the rectangle"
-}
+if (isInside(rectangle1, otherpoint)) {
+	if (isInside(rectangle2, otherpoint)) {
+	println "The point falls inside both rectangles."
+	} else {
+		println "The point falls inside rectangle 1."
+	}
+} else if (isInside(rectangle2, otherpoint)) {
+	println "The point falls inside rectangle 2."
+	} else {
+	println "The point falls outside both rectangles."
+	}

@@ -1,51 +1,24 @@
 int binary2decimal(String str) {
-    int i = str.size()
-    int decimal = 0
-    int binary = 0
+    int i = str.size()-1
+    int d = 0
+    int n = 0
     char digit
-    while (i > 0 ) {
-        digit = str.charAt(str.size() - i)
-        binary= Integer.parseInt(new String(digit))
-        decimal = decimal + binary * (2 ** i)
-        println ("i:" + i + "  binary:" + binary + "   2**i:" + (2 ** i))
+    while (i >= 0 ) {
+        if (str.charAt(i) == "0") {
+            d = 0
+        } else {
+            d = 1
+        }
+        n = n * 2 + d
         i--
     }
-    return decimal
-
+    return n
 }
 
-int binary2decimalBis(String str) {
-    int i = 0
-    int decimal = 0
-    int binary = 0
-    char digit
-    while (i < str.size()) {
-        digit = str.charAt(i)
-        binary= Integer.parseInt(new String(digit))
-        decimal = decimal + binary * (2 ** (str.size() - i))
-        println ("i:" + i + "  binary:" + binary + "   2**i:" + (2 ** i))
-        i++
-    }
-    return decimal
 
-}
-// This one I have no clue
-int decimal2binary(int decimal) {
-    int i = int.size()
-    int decimal = 0
-    int binary = 0
-    while (i > 0 ) {
-        binary = binary + binary / (2 ** i)
-        println ("i:" + i + "  binary:" + binary + "   2**i:" + (2 ** i))
-        i--
-    }
-    return decimal
-
-
-}
-println binary2decimal("0")
 println binary2decimal("1")
-println binary2decimal("001")
-println binary2decimal("01")
-println binary2decimal("001001")
-println binary2decimalBis("001001")
+println binary2decimal("1001")
+println binary2decimal("1001001")
+
+
+

@@ -1,10 +1,9 @@
-//It doesn't work with doubles, Can Groovy take doubles from Strings??
 println "Please enter a number: "
 String str1 = System.console().readLine()
-double num1 = parseInt(str1)
+int num1 = parseInt(str1)
 println "Please enter a number: "
 String str2 = System.console().readLine()
-double num2 = Double.parseDouble(str2)
+int num2 = parseInt(str2)
 double result
 println "Please, choose an operation: +, -, *, / "
 String operation= System.console().readLine()

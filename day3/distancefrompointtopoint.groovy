@@ -1,5 +1,4 @@
-//Define a method for distance
-double distance22(Point a, Point b) {
+double getDistance(Point a, Point b) {
 	int da = a.x - b.x;
 	int db = a.y - b.y;
 	double result = Math.sqrt((da * da) + (db * db));
@@ -7,20 +6,19 @@ double distance22(Point a, Point b) {
 }
 
 
-int naivesmallest(int num1, int num2, int num3) {
-	int t
-	if (num1 <  num2) {
-    	t = num2
-    	num2 = num1
-    	num1 = t
-    	if (num2 < num3) {
-        	t = num2
-        	num2 = num3
-        	num3 = t
-        	// num3 contains the largest number.
+int getSmallest(double dist1, double dist2 , double dist3){
+	if (dist1 <  dist2) {
+    	if (dist3 < dist1) {
+    		return dist3
+    	} else {
+    		return dist1
     	}
-	}
-	return num3
+    } else if (dist2 < dist3) {
+    	return dist2
+    } else {
+    	return dist3
+    }
+
 }
 
 
@@ -51,8 +49,13 @@ println "Please enter the value for y at point 1: "
 String stry3 = System.console().readLine()
 point3.y = Double.parseDouble(stry3)
 
-int	da = point1.x - point2.x;
-int	db = point1.y - point2.y;
-double dist = Math.sqrt ((da * da) + (db * db));
-
-println (distance22(point1,point2));
+double dist1 = getDistance(point1, point2)
+double dist2 = getDistance(point1, point3)
+double dist3 = getDistance(point2, point3)
+if (getSmallest (dist1, dist2, dist3) == dist1) {
+	println "Point 1 and point 2 are closer, the distance is " + dist1
+} else if (getSmallest (dist1, dist2, dist3) == dist2) {
+	println "Point 1 and point 3 are closer, the distance is " + dist2
+} else {
+	println "Point 2 and point 3 are closer, the distance is " + dist3
+}
