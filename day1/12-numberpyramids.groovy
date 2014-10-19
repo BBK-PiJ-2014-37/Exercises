@@ -9,6 +9,7 @@ while (true) {
 		println "That number is no good"
 	}
 }
+
 int c = 1
 while (c <= n) {
     int i = 1
