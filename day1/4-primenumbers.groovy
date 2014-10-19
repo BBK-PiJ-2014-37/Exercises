@@ -1,6 +1,6 @@
 String str = System.console().readLine()
 int i = Integer.parseInt(str)
-int d = i - 1
+int d = Math.sqrt(i)
 boolean prime = true
 while (prime && d > 1) {
 	if (i % d == 0) {
