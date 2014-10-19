@@ -10,6 +10,7 @@ while (num2 > 0) {
 	num2--
 }
 println re
+//I assume both numbers are positive.
 	
 
 
