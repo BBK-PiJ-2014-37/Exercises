@@ -8,7 +8,7 @@ while (!finished) {
 		finished = true
 	} else if (num > max) {
 	        max = num
-	        }
+    }
 		
-	}
+}
 println "The highest number is " + max
