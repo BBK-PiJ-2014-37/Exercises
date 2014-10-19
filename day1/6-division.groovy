@@ -13,4 +13,5 @@ while (rest >= div) {
 	quotient++
 }
 println ddend + " divided by " + div + " is " + quotient + ", remainder " + rest
+//I assume both numbers are positive.
 
