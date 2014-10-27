@@ -44,58 +44,58 @@ class PatientList {
    			newPatient.setNext(head);
 			head.setPrev(newPatient);
 			head = newPatient;
-			head.setPrev(null);
-   		} else {
+		} else {
    			head = newPatient;
    		}
    		
     }
 
     public boolean delPatient(Patient patient) {
-	if (head == patient) {
-	    head = head.getNext();
-	    patient.setNext(null);
-	    head.setPrev(null);
-	    return true;
-	}
-	Patient prev = head;
-	Patient p = head.getNext();
-	while (p != null) {
-	    if (p == patient) {
-		prev.setNext(p.getNext());
-		p.setNext(null);
-		if (p.prevPatient!= null) {
-			p.setPrev(prev);
-		} else {
-			p = prev.nextPatient;
+		if (head == patient) {
+	    	head = head.getNext();
+	    	patient.setNext(null);
+	    	head.setPrev(null);
+	    	return true;
 		}
-		return true;
-	    }
-	    prev = p;
-	    p = p.getNext();
-	}
-	return false;
+		Patient p = head.getNext();
+		while (p != null) {
+	    	if (p == patient) {
+				p.getPrev().setNext(p.getNext());
+				if (p.getNext() != null) {
+					p.getNext().setPrev(p.getPrev());
+				}
+				p.setNext(null);
+				p.setPrev(null);
+				return true;
+	    	}
+	    	p = p.getNext();
+		}
+		return false;
     }
 
     public int countPatients() {
-	int i = 0;
-	Patient p = head;
-
-	while (p != null) {
-	    i++;
-	    p = p.getNext();
-	}
-	return i;
+		int i = 0;
+		Patient p = head;
+		while (p != null) {
+	    	i++;
+	    	p = p.getNext();
+		}
+		return i;
     }
 
     public void prettyPrint() {
-	Patient p = head;
-
-	System.out.print("Patients:\n");
-	while (p != null) {
-	    System.out.print("  " + p + "\n");
-	    p = p.getNext();
-	}
+		Patient p = head;
+		Patient last = head;
+		System.out.print("Patients:\n");
+		while (p != null) {
+		    System.out.print("  " + p + "\n");
+	    	last = p;
+	    	p = p.getNext();
+		}
+		while (last != null) {
+			System.out.print("  " + last + "\n");
+	    	last = last.getPrev();
+		}
     }
 
 }
