@@ -35,7 +35,10 @@ class PatientList {
     }
 
     public boolean delPatient(Patient patient) {
-		if (head == patient) {
+		if (head == null) {
+    		return false;
+		}
+    	if (head == patient) {
 	    	head = head.getNext();
 	    	patient.setNext(null);
 	    	return true;
