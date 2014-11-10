@@ -19,4 +19,12 @@ public class UserImpl implements User {
 	public void setID(int idNumber) {
 		this.userID = idNumber;
 	}
+
+	public void register(Library library) {
+
+	}
+
+	public Library getLibrary() {
+		return null;
+	}
 }

@@ -1,7 +1,18 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 
- public class UserTest {
+class MockLibrary implements Library {
+	
+	public String getName() {
+		return "Library Name";
+	}
+
+	public int getID(String userName) {
+		return 13;
+	}
+}
+
+public class UserTest {
  	static String testUserName = "Tim Burton";
  	User testUser;
 
@@ -9,7 +20,6 @@ import static org.junit.Assert.*;
  	public void setUp() {
  		String testName = testUserName;
 		testUser = new UserImpl(testUserName);
-
  	}
 
 	@Test
@@ -27,5 +37,13 @@ import static org.junit.Assert.*;
 		int testID = 42;
 		testUser.setID(testID);
 		assertEquals(testID, testUser.getID());
+	}
+
+	@Test
+	public void testRegister() {
+		Library testLibrary = new MockLibrary();
+		testUser.register(testLibrary);
+		assertSame(testLibrary, testUser.getLibrary());
+		assertEquals(13, testUser.getID());
 	}
 }
