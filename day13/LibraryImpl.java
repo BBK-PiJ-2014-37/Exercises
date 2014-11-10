@@ -1,11 +1,17 @@
 class LibraryImpl implements Library {
+	private String name;
+	private int maxBooksPerUser;
+	private int nextID;
+
 
 	public LibraryImpl(String libraryName) {
-
+		this.name = libraryName;
+		this.maxBooksPerUser = 0;
+		this.nextID = 1;
 	}
 	
 	public String getName() {
-		return "Library Name";
+		return this.name;
 	}
 
 	public int getID(String userName) {
@@ -13,9 +19,10 @@ class LibraryImpl implements Library {
 	}
 	
 	public void setMaxBooksPerUser(int limit) {
+		this.maxBooksPerUser = limit;
 	}
 
 	public int getMaxBooksPerUser(){
-		return 2;
+		return this.maxBooksPerUser;
 	}
 }
