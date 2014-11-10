@@ -1,18 +1,22 @@
 public class UserImpl implements User {
+
 	private String name;
-	private int userId;
+	private int userID;
 	
 	public UserImpl(String name) {
+		this.name = name;
+		this.userID = 0;
 	}
 
 	public String getName() {
-		return "";
+		return this.name;
 	}
 
 	public int getID() {
-		return -1;
+		return this.userID;
 	}
-
+	
 	public void setID(int idNumber) {
+		this.userID = idNumber;
 	}
 }
