@@ -2,6 +2,7 @@ public class UserImpl implements User {
 
 	private String name;
 	private int userID;
+	private Library library;
 	
 	public UserImpl(String name) {
 		this.name = name;
@@ -21,10 +22,11 @@ public class UserImpl implements User {
 	}
 
 	public void register(Library library) {
-
+		this.setID(library.getID(this.getName()));
+		this.library = library;
 	}
 
 	public Library getLibrary() {
-		return null;
+		return this.library;
 	}
 }
