@@ -10,6 +10,13 @@ class MockLibrary implements Library {
 	public int getID(String userName) {
 		return 13;
 	}
+	
+	public void setMaxBooksPerUser(int limit) {
+	}
+
+	public int getMaxBooksPerUser(){
+		return 2;
+	}
 }
 
 public class UserTest {
