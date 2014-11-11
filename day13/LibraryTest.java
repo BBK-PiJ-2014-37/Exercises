@@ -4,6 +4,12 @@ import static org.junit.Assert.*;
 public class LibraryTest {
 	static String testLibraryName = "British Library";
  	Library testLibrary;
+ 	static String testTitle1 = "Alice in Wonderland";
+ 	static String testAuthor1 = "Lewis Carroll";
+ 	static String testTitle2 = "Rayuela";
+ 	static String testAuthor2 = "Julio Cortazar";
+	static String testTitle3 = "19Q4";
+ 	static String testAuthor3 = "Haruki Murakami";
 
  	@Before
  	public void setUp() {
@@ -40,4 +46,40 @@ public class LibraryTest {
 	public void testInitialMaxBooksPerUser() {
 		assertEquals(0, testLibrary.getMaxBooksPerUser());
 	}
+
+	@Test
+	public void testAddTakeBook(){
+		testLibrary.addBook(testTitle1, testAuthor1);
+		testLibrary.addBook(testTitle2, testAuthor2);
+		testLibrary.addBook(testTitle3, testAuthor3);
+		Book testBook = testLibrary.takeBook(testTitle1);
+		assertNotNull(testBook);
+		assertEquals(testTitle1, testBook.getTitle());
+		assertEquals(testAuthor1, testBook.getAuthor());
+		assertTrue(testBook.isTaken());
+		assertNull(testLibrary.takeBook(testTitle1));
+		testBook = testLibrary.takeBook(testTitle2);
+		assertNotNull(testBook);
+		assertEquals(testTitle2, testBook.getTitle());
+		assertEquals(testAuthor2, testBook.getAuthor());
+		assertTrue(testBook.isTaken());
+		assertNull(testLibrary.takeBook(testTitle2));
+		testBook = testLibrary.takeBook(testTitle3);
+		assertNotNull(testBook);
+		assertEquals(testTitle3, testBook.getTitle());
+		assertEquals(testAuthor3, testBook.getAuthor());
+		assertTrue(testBook.isTaken());
+		assertNull(testLibrary.takeBook(testTitle3));
+		assertNull(testLibrary.takeBook("Rubbish"));
+	}
+	
+	@Test
+	public void testReturnBook(){
+		testLibrary.addBook(testTitle1, testAuthor1);
+		Book testBook = testLibrary.takeBook(testTitle1);
+		assertNotNull(testBook);
+		testLibrary.returnBook(testBook);
+		assertFalse(testBook.isTaken());
+	}
+
 }

@@ -17,6 +17,16 @@ class MockLibrary implements Library {
 	public int getMaxBooksPerUser(){
 		return 2;
 	}
+
+	public void addBook(String title, String author) {
+	}
+
+	public Book takeBook(String title){
+		return null;
+	}
+
+	public void returnBook(Book book){
+	}
 }
 
 public class UserTest {

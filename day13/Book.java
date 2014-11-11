@@ -4,4 +4,6 @@ interface Book {
 
 	public String getAuthor();
 
+	public boolean isTaken();
+
 }

@@ -32,4 +32,14 @@ class LibraryImpl implements Library {
 	public int getMaxBooksPerUser(){
 		return this.maxBooksPerUser;
 	}
+
+	public void addBook(String title, String author){
+	}
+	
+	public Book takeBook(String title){
+		return null;
+	}
+
+	public void returnBook(Book book){
+	}
 }

@@ -14,4 +14,8 @@ public class BookImpl implements Book {
 	public String getAuthor() {
 		return this.author;
 	}
+
+	public boolean isTaken() {
+		return true;
+	}
 }
