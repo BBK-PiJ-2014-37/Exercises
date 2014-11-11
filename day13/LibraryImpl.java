@@ -1,13 +1,16 @@
+import java.util.Hashtable;
+
 class LibraryImpl implements Library {
 	private String name;
 	private int maxBooksPerUser;
 	private int nextID;
-
+	private Hashtable<String, Integer> userIDs;
 
 	public LibraryImpl(String libraryName) {
 		this.name = libraryName;
 		this.maxBooksPerUser = 0;
 		this.nextID = 1;
+		this.userIDs = new Hashtable<String, Integer>();
 	}
 	
 	public String getName() {
@@ -15,7 +18,11 @@ class LibraryImpl implements Library {
 	}
 
 	public int getID(String userName) {
-		return 13;
+		if (!userIDs.containsKey(userName)) {
+			userIDs.put(userName, nextID);
+			nextID++;
+		}
+		return userIDs.get(userName);
 	}
 	
 	public void setMaxBooksPerUser(int limit) {
