@@ -27,6 +27,18 @@ class MockLibrary implements Library {
 
 	public void returnBook(Book book){
 	}
+	
+	public int getReaderCount() {
+		return 0;
+	}
+
+	public int getBookCount() {
+		return 0;
+	}
+	
+	public int getBookBorrowedCount() {
+		return 0;
+	}
 }
 
 public class UserTest {

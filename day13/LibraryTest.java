@@ -16,6 +16,7 @@ public class LibraryTest {
  	@Before
  	public void setUp() {
  		testLibrary = new LibraryImpl(testLibraryName);
+ 		testLibrary.setMaxBooksPerUser(3);
  	}
 
 	@Test
@@ -40,13 +41,42 @@ public class LibraryTest {
 
 	@Test
 	public void testSetGetMaxBooksPerUser() {
-		testLibrary.setMaxBooksPerUser(3);
-		assertEquals(3, testLibrary.getMaxBooksPerUser());
+		testLibrary.setMaxBooksPerUser(4);
+		assertEquals(4, testLibrary.getMaxBooksPerUser());
 	}
 
 	@Test
-	public void testInitialMaxBooksPerUser() {
-		assertEquals(0, testLibrary.getMaxBooksPerUser());
+	public void testDoesntLendBooksToUnregisteredPeople() {
+		testLibrary.addBook(testTitle1, testAuthor1);
+		testLibrary.getID(testUser1);
+		Book testBook = testLibrary.takeBook(testTitle1, testUser2);
+		assertNull(testBook);
+	}
+
+	@Test 
+	public void testDoesntLendNonExistingBooks () {
+		testLibrary.addBook(testTitle1, testAuthor1);
+		testLibrary.getID(testUser1);
+		Book testBook = testLibrary.takeBook(testTitle2, testUser1);
+		assertNull(testBook);
+	}
+
+	@Test 
+	public void testDoesntLendTooManyBooks () {
+		testLibrary.setMaxBooksPerUser(2);
+		testLibrary.addBook(testTitle1, testAuthor1);
+		testLibrary.addBook(testTitle2, testAuthor2);
+		testLibrary.addBook(testTitle3, testAuthor3);
+		testLibrary.getID(testUser1);
+		Book book1 = testLibrary.takeBook(testTitle1, testUser1);
+		Book book2 = testLibrary.takeBook(testTitle2, testUser1);
+		Book book3 = testLibrary.takeBook(testTitle3, testUser1);
+		assertNotNull(book1);
+		assertNotNull(book2);
+		assertNull(book3);
+		testLibrary.returnBook(book1);
+		book3 = testLibrary.takeBook(testTitle3, testUser1);
+		assertNotNull(book3);
 	}
 
 	@Test
@@ -54,6 +84,8 @@ public class LibraryTest {
 		testLibrary.addBook(testTitle1, testAuthor1);
 		testLibrary.addBook(testTitle2, testAuthor2);
 		testLibrary.addBook(testTitle3, testAuthor3);
+		testLibrary.getID(testUser1);
+		testLibrary.getID(testUser2);
 		Book testBook = testLibrary.takeBook(testTitle1, testUser1);
 		assertNotNull(testBook);
 		assertEquals(testTitle1, testBook.getTitle());
@@ -74,14 +106,47 @@ public class LibraryTest {
 		assertNull(testLibrary.takeBook(testTitle3, testUser1));
 		assertNull(testLibrary.takeBook("Rubbish", testUser2));
 	}
+
 	
 	@Test
 	public void testReturnBook(){
 		testLibrary.addBook(testTitle1, testAuthor1);
+		testLibrary.getID(testUser2);
 		Book testBook = testLibrary.takeBook(testTitle1, testUser2);
 		assertNotNull(testBook);
 		testLibrary.returnBook(testBook);
 		assertFalse(testBook.isTaken());
 	}
 
+	@Test
+	public void testGetReaderCount() {
+		assertEquals(0, testLibrary.getReaderCount());
+		testLibrary.getID(testUser1);
+		testLibrary.getID(testUser2);
+		assertEquals(2, testLibrary.getReaderCount());
+	}
+	
+	@Test
+	public void testGetBookCount() {
+		assertEquals(0, testLibrary.getBookCount());
+		testLibrary.addBook(testTitle1, testAuthor1);
+		testLibrary.addBook(testTitle2, testAuthor2);
+		assertEquals(2, testLibrary.getBookCount());
+		testLibrary.addBook(testTitle3, testAuthor3);
+		assertEquals(3, testLibrary.getBookCount());
+	}
+
+	@Test
+	public void testGetBookBorrowedCount() {
+		testLibrary.addBook(testTitle1, testAuthor1);
+		testLibrary.addBook(testTitle2, testAuthor2);
+		testLibrary.addBook(testTitle3, testAuthor3);
+		assertEquals(0, testLibrary.getBookBorrowedCount());
+		testLibrary.getID(testUser1);
+		Book testBook = testLibrary.takeBook(testTitle1, testUser1);
+		assertNotNull(testBook);
+		assertEquals(1, testLibrary.getBookBorrowedCount());
+		testLibrary.returnBook(testBook);
+		assertEquals(0, testLibrary.getBookBorrowedCount());
+	}
 }
