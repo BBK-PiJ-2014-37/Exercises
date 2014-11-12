@@ -6,4 +6,7 @@ interface Book {
 
 	public boolean isTaken();
 
+	public void setBorrower(String userName);
+
+	public String getBorrower();
 }

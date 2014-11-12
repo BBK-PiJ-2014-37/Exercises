@@ -4,6 +4,6 @@ public interface Library {
 	public void setMaxBooksPerUser(int limit);
 	public int getMaxBooksPerUser();
 	public void addBook(String title, String author);
-	public Book takeBook(String title);
+	public Book takeBook(String title, String borrower);
 	public void returnBook(Book book);
 }

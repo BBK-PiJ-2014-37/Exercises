@@ -10,6 +10,8 @@ public class LibraryTest {
  	static String testAuthor2 = "Julio Cortazar";
 	static String testTitle3 = "19Q4";
  	static String testAuthor3 = "Haruki Murakami";
+ 	static String testUser1 = "Tim Burton";
+ 	static String testUser2 = "Amelia Baltar";
 
  	@Before
  	public void setUp() {
@@ -52,31 +54,31 @@ public class LibraryTest {
 		testLibrary.addBook(testTitle1, testAuthor1);
 		testLibrary.addBook(testTitle2, testAuthor2);
 		testLibrary.addBook(testTitle3, testAuthor3);
-		Book testBook = testLibrary.takeBook(testTitle1);
+		Book testBook = testLibrary.takeBook(testTitle1, testUser1);
 		assertNotNull(testBook);
 		assertEquals(testTitle1, testBook.getTitle());
 		assertEquals(testAuthor1, testBook.getAuthor());
 		assertTrue(testBook.isTaken());
-		assertNull(testLibrary.takeBook(testTitle1));
-		testBook = testLibrary.takeBook(testTitle2);
+		assertNull(testLibrary.takeBook(testTitle1, testUser2));
+		testBook = testLibrary.takeBook(testTitle2, testUser1);
 		assertNotNull(testBook);
 		assertEquals(testTitle2, testBook.getTitle());
 		assertEquals(testAuthor2, testBook.getAuthor());
 		assertTrue(testBook.isTaken());
-		assertNull(testLibrary.takeBook(testTitle2));
-		testBook = testLibrary.takeBook(testTitle3);
+		assertNull(testLibrary.takeBook(testTitle2, testUser1));
+		testBook = testLibrary.takeBook(testTitle3, testUser2);
 		assertNotNull(testBook);
 		assertEquals(testTitle3, testBook.getTitle());
 		assertEquals(testAuthor3, testBook.getAuthor());
 		assertTrue(testBook.isTaken());
-		assertNull(testLibrary.takeBook(testTitle3));
-		assertNull(testLibrary.takeBook("Rubbish"));
+		assertNull(testLibrary.takeBook(testTitle3, testUser1));
+		assertNull(testLibrary.takeBook("Rubbish", testUser2));
 	}
 	
 	@Test
 	public void testReturnBook(){
 		testLibrary.addBook(testTitle1, testAuthor1);
-		Book testBook = testLibrary.takeBook(testTitle1);
+		Book testBook = testLibrary.takeBook(testTitle1, testUser2);
 		assertNotNull(testBook);
 		testLibrary.returnBook(testBook);
 		assertFalse(testBook.isTaken());

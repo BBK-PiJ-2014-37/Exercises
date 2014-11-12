@@ -5,12 +5,14 @@ class LibraryImpl implements Library {
 	private int maxBooksPerUser;
 	private int nextID;
 	private Hashtable<String, Integer> userIDs;
+	private Hashtable<String, Book> books;
 
 	public LibraryImpl(String libraryName) {
 		this.name = libraryName;
 		this.maxBooksPerUser = 0;
 		this.nextID = 1;
 		this.userIDs = new Hashtable<String, Integer>();
+		this.books = new Hashtable<String, Book>();
 	}
 	
 	public String getName() {
@@ -34,12 +36,23 @@ class LibraryImpl implements Library {
 	}
 
 	public void addBook(String title, String author){
+		Book newBook = new BookImpl(title, author);
+		books.put(title, newBook);
 	}
 	
-	public Book takeBook(String title){
-		return null;
+	public Book takeBook(String title, String borrower){
+		if (!books.containsKey(title)) {
+			return null;
+		}
+		Book aBook = books.get(title);
+		if (aBook.isTaken()) {
+			return null;
+		}
+		aBook.setBorrower(borrower);
+		return aBook;
 	}
 
 	public void returnBook(Book book){
+		book.setBorrower(null);
 	}
 }

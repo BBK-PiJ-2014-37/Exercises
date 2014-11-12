@@ -21,7 +21,7 @@ class MockLibrary implements Library {
 	public void addBook(String title, String author) {
 	}
 
-	public Book takeBook(String title){
+	public Book takeBook(String title, String borrower){
 		return null;
 	}
 
