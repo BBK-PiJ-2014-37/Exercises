@@ -1,5 +1,6 @@
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.util.List;
 
 public class LibraryTest {
 	static String testLibraryName = "British Library";
@@ -105,6 +106,10 @@ public class LibraryTest {
 		assertTrue(testBook.isTaken());
 		assertNull(testLibrary.takeBook(testTitle3, testUser1));
 		assertNull(testLibrary.takeBook("Rubbish", testUser2));
+		List<Book> books = testLibrary.getBooksBorrowedBy(testUser1);
+		assertEquals(2, books.size());
+		books = testLibrary.getBooksBorrowedBy(testUser2);
+		assertEquals(1, books.size());
 	}
 
 	

@@ -1,5 +1,7 @@
 import java.util.Hashtable;
 import java.util.Enumeration;
+import java.util.List;
+import java.util.ArrayList;
 
 class LibraryImpl implements Library {
 	private String name;
@@ -81,6 +83,17 @@ class LibraryImpl implements Library {
 			Book thisBook = e.nextElement();
 			if (thisBook.isTaken()) {
 				booksBorrowed++;
+			}
+		}
+		return booksBorrowed;
+	}
+
+	public List<Book> getBooksBorrowedBy(String userName) {
+		List<Book> booksBorrowed = new ArrayList<Book>();
+		for (Enumeration<Book> e = books.elements(); e.hasMoreElements();) {
+			Book thisBook = e.nextElement();
+			if (thisBook.getBorrower().equals(userName)) {
+				booksBorrowed.add(thisBook);
 			}
 		}
 		return booksBorrowed;

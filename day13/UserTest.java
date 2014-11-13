@@ -1,5 +1,7 @@
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.util.List;
+import java.util.ArrayList;
 
 class MockLibrary implements Library {
 	
@@ -39,6 +41,13 @@ class MockLibrary implements Library {
 	public int getBookBorrowedCount() {
 		return 0;
 	}
+
+	public List<Book> getBooksBorrowedBy(String userName) {
+		List<Book> list = new ArrayList<Book>();
+		list.add(new BookImpl("BookTitle", "BookAuthor"));
+		return list;
+	}
+
 }
 
 public class UserTest {
@@ -74,5 +83,16 @@ public class UserTest {
 		testUser.register(testLibrary);
 		assertSame(testLibrary, testUser.getLibrary());
 		assertEquals(13, testUser.getID());
+	}
+
+	@Test
+	public void testBooksBorrowed() {
+		UserImpl user = new UserImpl("UserName");
+		MockLibrary library = new MockLibrary();
+		user.register(library);
+		List<Book> list = user.getBooksBorrowed();
+		assertEquals(1, list.size());
+		assertEquals("BookTitle", list.get(0).getTitle());
+		assertEquals("BookAuthor", list.get(0).getAuthor());
 	}
 }

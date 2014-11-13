@@ -1,3 +1,6 @@
+import java.util.List;
+
+
 public class UserImpl implements User {
 
 	private String name;
@@ -28,5 +31,9 @@ public class UserImpl implements User {
 
 	public Library getLibrary() {
 		return this.library;
+	}
+
+	public List<Book> getBooksBorrowed() {
+		return this.getLibrary().getBooksBorrowedBy(this.getName());
 	}
 }

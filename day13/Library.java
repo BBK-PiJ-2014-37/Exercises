@@ -1,3 +1,5 @@
+import java.util.List;
+
 public interface Library {
 	String getName();
 	int getID(String userName);
@@ -9,4 +11,5 @@ public interface Library {
 	public int getReaderCount();
 	public int getBookCount();
 	public int getBookBorrowedCount();
+	public List<Book> getBooksBorrowedBy(String userName);
 }
