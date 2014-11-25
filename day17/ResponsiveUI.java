@@ -32,7 +32,7 @@ class Finisher {
 		done.add(new Integer(taskNo));
 	}
 
-	public synchronized String getObits() {
+	public synchronized String getFinished() {
 		if (done.size() == 0) {
 			return null;
 		}
@@ -49,9 +49,10 @@ public class ResponsiveUI {
 			System.out.print("Enter the duration in ms of task " + i + ": ");
 			int ms = Integer.parseInt(System.console().readLine());
 			Waiter waiter = new Waiter(i, ms, finisher);
+			// Waiter waiter = new Waiter(i, ms, this);
 			Thread thread = new Thread(waiter);
 			thread.start();
-			String finished = finisher.getObits();
+			String finished = finisher.getFinished();
 			if (finished != null) {
 				System.out.println("Finished tasks: " + finished);
 			}
