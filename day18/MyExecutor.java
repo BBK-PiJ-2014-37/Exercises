@@ -29,42 +29,34 @@ public class MyExecutor implements Executor {
         		threadPool[i].start();
         		i++;
         	}
-        }
-        
-        /* put(E e)
-    	Inserts the specified element at the tail of this queue, 
-    	waiting if necessary for space to become available.
- 		*/
+        }        
     }
-    //the queue doesn't take null. Create a different class of workers?
+    
     public void shutdown() {
     	int i = 0;
     	while(i < threadPool.length) {
         	try {
-        		queue.put(null);
+        		queue.put(new Killer());
         	} catch (InterruptedException ex) {
         		ex.printStackTrace();
         	}
         	i++;
         }  		
     }
+    
 
-   /* public int getMaxPendingTime() {
+   public int getMaxPendingTime() {
     	int i = 0;
     	int max = 0;
     	while(i < queue.size()) {
     		if (queue.iterator().hasNext()) {
-    			int d = queue.iterator().next().getDuration(); //is in TimedTask, but not in TextLoop. 
-    			//Should I create a new executable???
-    			max += d;
-    		}
+                TimedTask t = (TimedTask)queue.iterator().next();
+                max += t.getDuration();
+            }
     		i++;
     	}
     	return max;
     }
-    */
-
-
 }
 
 class Worker implements Runnable {
@@ -79,17 +71,21 @@ class Worker implements Runnable {
 			Runnable r = null;
 			try {
         		r = queue.take();
-        		if(r == null) {
+        		if(r instanceof Killer) {
         			return;
         		}
+                
 			} catch (InterruptedException ex) {
         		ex.printStackTrace();
         	}
         	r.run();
 		}
 	}
-
-    /* take()
-	Retrieves and removes the head of this queue, waiting if necessary until an element becomes available.
-	*/
 }
+
+class Killer implements Runnable {
+    public void run() {}
+}
+
+    
+
