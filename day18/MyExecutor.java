@@ -25,7 +25,7 @@ public class MyExecutor implements Executor {
         if (threadPool[0] == null) {
         	int i = 0;
         	while(i < threadPool.length) {
-        		threadPool[i] = new Thread(new Worker(queue));
+        		threadPool[i] = new Thread(new Manager(queue));
         		threadPool[i].start();
         		i++;
         	}
@@ -59,10 +59,10 @@ public class MyExecutor implements Executor {
     }
 }
 
-class Worker implements Runnable {
+class Manager implements Runnable {
 	private BlockingQueue<Runnable> queue;
 
-	public Worker(BlockingQueue<Runnable> queue) {
+	public Manager(BlockingQueue<Runnable> queue) {
 		this.queue = queue;
 	}
 
