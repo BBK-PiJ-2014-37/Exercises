@@ -25,5 +25,12 @@ public class ElementUtils {
     	}
     	return newList;
     }
-
+    
+    public static <T> List<T> transformedList(List<T> list, Function <T, T> function) {
+    	List<T> newList = new ArrayList<T>();
+    	for (int i = 0; i < list.size(); i++) {
+    		newList.add(function.transform(list.get(i)));	 			
+    	}
+    	return newList;
+    }
 }
