@@ -1,3 +1,4 @@
+package worksheets;
 import java.util.Arrays;
 
 public class ArrayComparator {
@@ -14,6 +15,8 @@ public class ArrayComparator {
 		Arrays.sort(myArray, (s1, s2) -> {boolean s1HasE = s1.contains("e"); boolean s2HasE = s2.contains("e");	if (s1HasE == s2HasE) {return 0;} if (s1HasE) {return -1;} return 1;});
 		System.out.println(Arrays.toString(myArray));
 		Arrays.sort(myArray, (s1, s2) -> ArrayComparator.eChecker(s1, s2));
+		System.out.println(Arrays.toString(myArray));
+		Arrays.sort(myArray, ArrayComparator::eChecker);
 		System.out.println(Arrays.toString(myArray));
 		for (int i = 1; i < myArray.length; i++) {
 			if ((eChecker(myArray[i-1], myArray[i]) == 1)) {
