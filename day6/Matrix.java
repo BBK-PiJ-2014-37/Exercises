@@ -12,7 +12,7 @@ public class Matrix {
 
     public void setElement(int r, int c, int newelem) {
         if (isValid(r, c)) {
-            matrix[i][j] = newelem;
+            matrix[r][c] = newelem;
         }
     }
 
@@ -21,7 +21,7 @@ public class Matrix {
     }
 
     public void setRow(int r, String str ) {
-        String[] newRow = str.split(str, ",");
+        String[] newRow = str.split(",");
         if (r < matrix.length && newRow.length == matrix[0].length) {
             for (int c = 0; c < matrix[0].length; c++ ) {
                 setElement(r, c, Integer.parseInt(newRow[c]));
@@ -30,7 +30,7 @@ public class Matrix {
     }
 
     public void setColumn(int c, String str ) {
-        String[] newColumn = str.split(str, ",");
+        String[] newColumn = str.split(",");
         if (c < matrix[0].length && newColumn.length == matrix.length) {
             for (int r = 0; r < matrix.length; r++ ) {
                 setElement(r, c, Integer.parseInt(newColumn[r]));
@@ -40,22 +40,50 @@ public class Matrix {
 
     public String toString () { 
         String matrixString = "[";
-        for (int r = 0; r < columns-1; r++) {
-            for (int c = 0; c < rows-1; c++) {
-            matrixString = matrixString + matrix[c] + ",";
-                }
-            matrixString = matrixString + matrix[c-1] + ";";
+        for (int r = 0; r < matrix.length; r++) {
+            for (int c = 0; c < matrix[0].length; c++) {
+            	matrixString = matrixString + matrix[r][c];
+            	if (c < matrix[0].length-1) {
+            		matrixString = matrixString + ",";
+            	}
+            }
+            if (r < matrix.length - 1) {
+            	matrixString = matrixString + ";";
+            }
         }
-        matrixString = matrixString + matrix[r-1] + "]";
+        matrixString = matrixString + "]";
         return matrixString;
     }
 
     public void prettyPrint() {
-        for (int r = 0; r < columns; r++) {
-            for (int c = 0; c < row; c++) {
-                System.out.println(matrix[c] + '\t');
+        for (int r = 0; r < matrix[0].length; r++) {
+            for (int c = 0; c < matrix.length; c++) {
+                System.out.print("" + matrix[r][c] + "|");
             }
                 System.out.println();
         }
+    }
+    
+    public void setMatrix(String elements) {
+    	String[] rows = elements.split(";");
+    	for (int r = 0; r < rows.length; r++) {
+    		setRow(r, rows[r]);
+    	}
+    }
+    
+    public static void main (String args[]) {
+    	Matrix matrixTest = new Matrix(3,3);
+    	matrixTest.prettyPrint();
+    	System.out.println();
+    	System.out.println(matrixTest.toString());
+    	System.out.println();
+    	matrixTest.setColumn(1,"0,0,0");
+    	matrixTest.prettyPrint();
+    	System.out.println();
+    	matrixTest.setRow(1,"3,3,3");
+    	matrixTest.prettyPrint();
+    	System.out.println();
+    	matrixTest.setMatrix("1,2,3;4,5,6;7,8,9");
+    	matrixTest.prettyPrint();
     }
 }
