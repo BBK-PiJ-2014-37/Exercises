@@ -12,7 +12,7 @@ public class MatrixChecker {
 		return true;
 	}
 
-	public static boolean isSymetrical(int[][] matrix) {
+	public static boolean isSymmetrical(int[][] matrix) {
 		if (!isSquare(matrix)) {
 			return false;
 		}
