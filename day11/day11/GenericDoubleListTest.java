@@ -1,3 +1,4 @@
+package day11;
 public class GenericDoubleListTest {
 
 	public static void main (String[] args) {

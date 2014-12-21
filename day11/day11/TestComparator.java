@@ -1,3 +1,4 @@
+package day11;
 public class TestComparator {
 	public static void main  (String[] args) {
 		Integer n1 = 8;

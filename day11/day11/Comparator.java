@@ -1,3 +1,4 @@
+package day11;
 public class Comparator {
 	
 	public double getMax(double n1, double n2) {

@@ -1,3 +1,4 @@
+package day11;
 public class GenericSingleNode<T> {
     private T value;
     private GenericSingleNode next;

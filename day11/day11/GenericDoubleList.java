@@ -1,3 +1,4 @@
+package day11;
 public class GenericDoubleList<T> implements NodeList<T> {
 
     private GenericNode<T> first;

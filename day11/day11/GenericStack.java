@@ -1,3 +1,4 @@
+package day11;
 public class GenericStack<Number> {
 	private GenericSingleNode<Number> first;
 
