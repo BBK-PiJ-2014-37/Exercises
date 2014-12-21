@@ -72,9 +72,20 @@ public class MyMatrix {
     	}
     }
     
+    public boolean isSymmetrical() {
+    	return MatrixChecker.isSymmetrical(matrix);
+    }
+    
+    public boolean isTriangular() {
+    	return MatrixChecker.isTriangular(matrix);
+    }
+    
     public static void main (String args[]) {
     	MyMatrix matrixTest = new MyMatrix(3,3);
     	matrixTest.prettyPrint();
+    	if (matrixTest.isSymmetrical()) {
+    		System.out.println("This matrix is symmetrical.");
+    	}
     	System.out.println();
     	System.out.println(matrixTest.toString());
     	System.out.println();
@@ -86,5 +97,14 @@ public class MyMatrix {
     	System.out.println();
     	matrixTest.setMatrix("1,2,3;4,5,6;7,8,9");
     	matrixTest.prettyPrint();
+    	if (!matrixTest.isSymmetrical()) {
+    		System.out.println("This matrix is not symmetrical");
+    	}
+    	matrixTest.setMatrix("1,0,0;4,5,0;7,8,9");
+    	matrixTest.prettyPrint();
+    	if (matrixTest.isTriangular()) {
+    		System.out.println("This matrix is triangular");
+    	}
+    	
     }
 }
