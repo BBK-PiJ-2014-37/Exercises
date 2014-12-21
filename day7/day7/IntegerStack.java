@@ -1,3 +1,4 @@
+package day7;
 public class IntegerStack {
 	private IntegerSingleNode head;
 

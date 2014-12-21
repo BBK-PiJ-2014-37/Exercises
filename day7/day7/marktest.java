@@ -1,3 +1,4 @@
+package day7;
 public static void main(String[] args) {
 		System.out.println("Input a mark. Finish with -1.");
 		String mark;

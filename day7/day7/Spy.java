@@ -1,3 +1,4 @@
+package day7;
 public class Spy {
 	private static int spyCount = 0;
 	int spyID; 

@@ -1,3 +1,4 @@
+package day7;
 public class Mark {
 	private static int studentCount = 0;
 	private static int distintion = 0;

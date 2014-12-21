@@ -1,3 +1,4 @@
+package day7;
 class Patient {
     String name;
     int age;

@@ -1,3 +1,4 @@
+package day7;
 public class IntegerQueue {
 	private IntegerSingleNode head;
     private IntegerSingleNode tail;

@@ -1,3 +1,4 @@
+package day7;
 public class IntegerSingleNode {
     private int n; 
     private IntegerSingleNode next;
