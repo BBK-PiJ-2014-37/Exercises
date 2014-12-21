@@ -1,33 +1,6 @@
 package day7;
-class Patient {
-    String name;
-    int age;
-    String illness;
-    Patient nextPatient;
-	
 
-    public Patient (String name, int age, String illness) {
-		this.name = name;
-		this.age = age;
-		this.illness = illness;
-		this.nextPatient = null;
-    }
-
-    public Patient getNext() {
-		return nextPatient;
-    }
-
-    public void setNext(Patient patient) {
-		this.nextPatient = patient;
-    }
-
-    public String toString() {
-		return this.name + ", " + this.age + ", "+ this.illness;
-    }
-
-}
-
-class PatientList {
+class CircularPatientList {
     Patient head;
 
     public void addPatient(Patient newPatient) {
@@ -107,10 +80,10 @@ class PatientList {
 }
 
 public class HospitalManagerCircular {
-    static PatientList patients = new PatientList();
 	
     public static void main (String[] args){
-		Patient first = new Patient("Maryann", 76, "Meningitis");
+    	CircularPatientList patients = new CircularPatientList();
+    	Patient first = new Patient("Maryann", 76, "Meningitis");
 		patients.addPatient(first);
 		patients.prettyPrint();
 		patients.addPatient(new Patient("Mary", 66, "Meningitis"));

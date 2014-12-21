@@ -20,8 +20,8 @@ public class Spy {
 	}
 	public static void main(String[] args) {
 		Spy spy1 = new Spy(007);
-		Spy spy2 = new Spy(99);
-		Spy spy3 = new Spy(86);
+		new Spy(99);
+		new Spy(86);
 		spy1.die(007);
 		
 	}

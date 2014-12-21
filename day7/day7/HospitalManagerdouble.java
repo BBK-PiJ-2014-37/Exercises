@@ -1,13 +1,14 @@
 package day7;
-class Patient {
+
+class PatientDouble {
     String name;
     int age;
     String illness;
-    Patient nextPatient;
-    Patient prevPatient;
+    PatientDouble nextPatient;
+    PatientDouble prevPatient;
 	
 
-    public Patient (String name, int age, String illness) {
+    public PatientDouble (String name, int age, String illness) {
 	this.name = name;
 	this.age = age;
 	this.illness = illness;
@@ -15,19 +16,19 @@ class Patient {
 	this.prevPatient = null;
     }
 
-    public Patient getNext() {
+    public PatientDouble getNext() {
 	return nextPatient;
     }
 
-    public Patient getPrev() {
+    public PatientDouble getPrev() {
 	return prevPatient;
     }
 
-    public void setNext(Patient patient) {
+    public void setNext(PatientDouble patient) {
 	this.nextPatient = patient;
     }
 
-    public void setPrev(Patient patient) {
+    public void setPrev(PatientDouble patient) {
 	this.prevPatient = patient;
     }
 
@@ -37,10 +38,10 @@ class Patient {
 
 }
 
-class PatientList {
-    Patient head;
+class PatientDoubleList {
+    PatientDouble head;
 
-    public void addPatient(Patient newPatient) {
+    public void addPatient(PatientDouble newPatient) {
    		if (head != null) {
    			newPatient.setNext(head);
 			head.setPrev(newPatient);
@@ -51,14 +52,14 @@ class PatientList {
    		
     }
 
-    public boolean delPatient(Patient patient) {
+    public boolean delPatient(PatientDouble patient) {
 		if (head == patient) {
 	    	head = head.getNext();
 	    	patient.setNext(null);
 	    	head.setPrev(null);
 	    	return true;
 		}
-		Patient p = head.getNext();
+		PatientDouble p = head.getNext();
 		while (p != null) {
 	    	if (p == patient) {
 				p.getPrev().setNext(p.getNext());
@@ -76,7 +77,7 @@ class PatientList {
 
     public int countPatients() {
 		int i = 0;
-		Patient p = head;
+		PatientDouble p = head;
 		while (p != null) {
 	    	i++;
 	    	p = p.getNext();
@@ -85,8 +86,8 @@ class PatientList {
     }
 
     public void prettyPrint() {
-		Patient p = head;
-		Patient last = head;
+		PatientDouble p = head;
+		PatientDouble last = head;
 		System.out.print("Patients:\n");
 		while (p != null) {
 		    System.out.print("  " + p + "\n");
@@ -102,26 +103,26 @@ class PatientList {
 }
 
 public class HospitalManagerdouble {
-    static PatientList patients = new PatientList();
+    static PatientDoubleList patients = new PatientDoubleList();
 	
     public static void main (String[] args){
-	Patient first = new Patient("Maryann", 76, "Meningitis");
+	PatientDouble first = new PatientDouble("Maryann", 76, "Meningitis");
 	patients.addPatient(first);
 	patients.prettyPrint();
-	patients.addPatient(new Patient("Mary", 66, "Meningitis"));
+	patients.addPatient(new PatientDouble("Mary", 66, "Meningitis"));
 	patients.prettyPrint();
-	patients.addPatient(new Patient("Lily", 65, "Tuberculosis"));
+	patients.addPatient(new PatientDouble("Lily", 65, "Tuberculosis"));
 	patients.prettyPrint();
-	Patient mid = new Patient("Louis", 26, "Meningitis");
+	PatientDouble mid = new PatientDouble("Louis", 26, "Meningitis");
 	patients.addPatient(mid);
 	patients.prettyPrint();
-	patients.addPatient(new Patient("Carlos", 15, "Meningitis"));
+	patients.addPatient(new PatientDouble("Carlos", 15, "Meningitis"));
 	patients.prettyPrint();
-	patients.addPatient(new Patient("Peter", 36, "Tuberculosis"));
+	patients.addPatient(new PatientDouble("Peter", 36, "Tuberculosis"));
 	patients.prettyPrint();
-	patients.addPatient(new Patient("Ann", 36, "Meningitis"));
+	patients.addPatient(new PatientDouble("Ann", 36, "Meningitis"));
 	patients.prettyPrint();
-	Patient last = new Patient("Kelly", 33, "Tuberculosis");
+	PatientDouble last = new PatientDouble("Kelly", 33, "Tuberculosis");
 	patients.addPatient(last);
 	patients.prettyPrint();
 	patients.delPatient(mid);
