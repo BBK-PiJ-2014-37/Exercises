@@ -1,3 +1,4 @@
+package day10;
 public class SmartPhone extends MobilePhone {
 
 	public SmartPhone(String brand) {

@@ -1,3 +1,4 @@
+package day10;
 public class OldPhone implements Phone {
 	private String brand;
 

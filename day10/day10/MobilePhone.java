@@ -1,3 +1,4 @@
+package day10;
 public class MobilePhone extends OldPhone {
 	private RingBuffer lastPhoneCalls;
 
