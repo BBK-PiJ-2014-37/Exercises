@@ -1,3 +1,4 @@
+package day17;
 import java.util.Date;  
 import java.util.StringTokenizer;  
 import java.util.Random; 

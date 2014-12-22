@@ -1,3 +1,4 @@
+package day17;
 import java.util.*;
 
 class Waiter implements Runnable {

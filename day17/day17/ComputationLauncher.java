@@ -1,3 +1,4 @@
+package day17;
 /**
  * This class launched two heavy computations
  * sequentially first, then in parallel. 

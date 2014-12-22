@@ -1,3 +1,4 @@
+package day17;
 public class TextLoop implements Runnable {
 	public static final int COUNT = 10;
 	private final String name;

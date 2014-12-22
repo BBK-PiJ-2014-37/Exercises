@@ -1,3 +1,4 @@
+package day17;
 public class Increaser implements Runnable {
 	private Counter c;
 	
