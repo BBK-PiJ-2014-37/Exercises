@@ -1,3 +1,4 @@
+package day15;
 public class Average {
 
 	public static int getValidInput(String message) {

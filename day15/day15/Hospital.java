@@ -1,3 +1,4 @@
+package day15;
 import java.util.*;
 
 public class Hospital {
