@@ -15,6 +15,10 @@ public class IntegerNode {
     public int getNumber() {
       return n;
     }
+    
+    public void setNumber(int n) {
+        this.n = n;
+      }
 
     public IntegerNode getNext() {
       return next;
