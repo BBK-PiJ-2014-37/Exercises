@@ -27,10 +27,12 @@ public class ListUtilities {
 			}
 			c++;
 		}
+		
 		while (c > 1) {
-			for (int i = 0; i < c; i++);
-			if (node.getNumber() > node.getNext().getNumber()) {
-				swap(node, node.getNext());
+			for (int i = 0; i < c; i++) {
+				if (node.getNumber() > node.getNext().getNumber()) {
+					swap(node, node.getNext());
+				}
 			}
 			c--;
 		}
