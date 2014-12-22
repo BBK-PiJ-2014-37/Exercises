@@ -1,3 +1,4 @@
+package day16;
 import java.io.*;
 
 public class TemperatureAverages {
