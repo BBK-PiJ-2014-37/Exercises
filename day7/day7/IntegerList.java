@@ -7,8 +7,10 @@ public class IntegerList {
 	  first = null;
     }
 
+    public IntegerNode getFirst() {
+	   return this.first;
+    }
     
-
     public void add(int n) {
 	  IntegerNode newNumber = new IntegerNode(n);
 	  if (first == null) {
