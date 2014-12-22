@@ -1,3 +1,4 @@
+package day12;
 public class HashUtilities {
 
 	public static int shortHash(int n) {

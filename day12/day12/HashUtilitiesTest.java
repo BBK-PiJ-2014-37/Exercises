@@ -1,3 +1,4 @@
+package day12;
 import org.junit.*;
 import static org.junit.Assert.*;
 
