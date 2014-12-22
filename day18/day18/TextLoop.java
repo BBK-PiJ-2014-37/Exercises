@@ -1,3 +1,4 @@
+package day18;
 import java.util.concurrent.*;
 
 public class TextLoop implements Runnable {
