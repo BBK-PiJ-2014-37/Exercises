@@ -47,6 +47,10 @@ public class ListUtilities {
 	public static void cocktailSort(IntegerList list) {
 		IntegerNode node = list.getFirst();
 		int c = 0;
+		if (node == null) {
+			return;
+		}
+		
 		boolean swaps = true;
 		while (node.getNext() != null) {
 			if (node.getNumber() > node.getNext().getNumber()) {
