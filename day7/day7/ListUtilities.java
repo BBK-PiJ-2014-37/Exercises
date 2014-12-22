@@ -13,12 +13,35 @@ public class ListUtilities {
 	}
 
 	public static void swap(IntegerNode i, IntegerNode j) {
-		IntegerNode temp = i;
+		int temp = i.getNumber();
 		i.setNumber(j.getNumber());
-		j.setNumber(temp.getNumber());
+		j.setNumber(temp);
 	}
 	
 	public static void bubbleSort(IntegerList list) {
+		IntegerNode node = list.getFirst();
+		int c = 0;
+		while (node.getNext() != null) {
+			if (node.getNumber() > node.getNext().getNumber()) {
+				swap(node, node.getNext());
+			}
+			node = node.getNext();
+			c++;
+		}
+		
+		while (c > 1) {
+			node = list.getFirst();
+			for (int i = 0; i < c; i++) {
+				if (node.getNumber() > node.getNext().getNumber()) {
+					swap(node, node.getNext());
+				}
+				node = node.getNext();
+			}
+			c--;
+		}
+	}
+
+	public static void cocktailSort(IntegerList list) {
 		IntegerNode node = list.getFirst();
 		int c = 0;
 		while (node.getNext() != null) {
@@ -43,6 +66,7 @@ public class ListUtilities {
 		IntegerList list = arrayToList(ls);
 		list.prettyPrint();
 		ListUtilities.bubbleSort(list);
+		System.out.print("sorted: ");
 		list.prettyPrint();
 	}
 
