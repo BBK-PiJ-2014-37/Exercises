@@ -22,6 +22,7 @@ public class IntegerList {
 		aux = aux.getNext();
 	  }
 	  aux.setNext(newNumber);
+	  newNumber.setPrev(aux);
     }
 
     public void prettyPrint() {
