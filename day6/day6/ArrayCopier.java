@@ -13,9 +13,7 @@ public class ArrayCopier {
 			dst[i] = src[i];
 			}
 			for (i = srclength; i < dstlength; i++) {
-
 				dst[i] = 0;
-				i++;
 			}
 		}
 	}
