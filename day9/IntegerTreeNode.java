@@ -1,4 +1,3 @@
-package day9;
 public class IntegerTreeNode {
 	int value;
 	IntegerTreeNode left;
@@ -90,23 +89,6 @@ public class IntegerTreeNode {
     }
 
     public int depth(){
-    	int result
-    	if(this.right == null && this.left == null) {
-    		result = 0;
-    	} else if (this.right != null){
-    		result = 1 + right.depth();
-    		if(this.left != null){
-    			result = 1 + left.depth();
-    		}
-    	if (right.depth() > left.depth()) {
-
-
-
-    	}
-    	return result;
-    }
-
-	public int depth(){
     	int leftDepth = 0;
     	int rightDepth = 0;
     	if (this.right != null) {
@@ -116,65 +98,24 @@ public class IntegerTreeNode {
         	leftDepth = left.depth();
     	}
     	if (leftDepth > rightDepth) {
-    		return 1 + leftDepth
+    		return 1 + leftDepth;
     	} else {
-    		return 1 + rightDepth
+    		return 1 + rightDepth;
     	}
     }
 
+    public static void main(String[] args) {
+    	IntegerTreeNode test1 = new IntegerTreeNode(6);
+    	test1.add(8);
+    	test1.add(3);
+    	test1.add(11);
+    	test1.add(9);
+    	test1.add(12);
+    	test1.add(5);
+    	System.out.println(test1.toString());
+    	System.out.println(test1.toSimpleString());
+    	System.out.println("The depth of this tree is " + test1.depth());
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public int depth2() {
-    	int result = 0;
-    	if(this.right == null && this.left == null){
-    		result = 0
-    	} else if (this.right != null){
-    		result = 1 + right.depth2()
- 
-
-    	}
-
-    	return result;
     }
-
-
-   
 
 }
