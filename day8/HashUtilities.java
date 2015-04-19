@@ -1,7 +1,8 @@
 public class HashUtilities {
+	public static final int MAX_HASH = 1000;
 
 	public static int shortHash(int n) {
-		return Math.abs(n % 1000);
+		return Math.abs(n % MAX_HASH);
 
 	}
 	
@@ -11,7 +12,7 @@ public class HashUtilities {
 			String str = System.console().readLine();
 			int hash = str.hashCode();
 			int smallHash = HashUtilities.shortHash(hash);
-			System.out.println("0 < " + smallHash + " < 1000");
+			System.out.println("0 < " + smallHash + " < " + MAX_HASH);
 		}
 	}
 }
