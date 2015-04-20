@@ -29,11 +29,18 @@ public class IntegerTreeNode {
 		if(n == this.value) {
 			return true;
 		} else {
-			if(left == null){
-				return false;
-			} else {
-				return left.contains(n);
-			}
+			return (n < this.value && left != null && left.contains(n)) ||
+				(n > this.value && right != null && right.contains(n));
+		}
+	}
+
+	public boolean containsVerbose(int n) {
+		System.out.println("Checking " + this.value);
+		if(n == this.value) {
+			return true;
+		} else {
+			return (n < this.value && left != null && left.contains(n)) ||
+				(n > this.value && right != null && right.contains(n));
 		}
 	}
 
@@ -53,39 +60,32 @@ public class IntegerTreeNode {
 		}
 	}
 
-	public String toString() {
-		String result = "[";
-		while (this.right != null && this.left != null) {
-			if (this.left != null) {
-				result = result + this.value + " L[" + this.left;
-				if (this.right != null) {
-					result = result + "]" + " R[" + this.right;
-				} else {
-					result = result + "]";
-				}
-			} else {
-				result = result + "]";
-			}
+	public String prettyPrint() {
+		String result = "[" + this.value + " L";
+		if (this.left == null) {
+			result += "[]"
+		} else {
+			result += left.toString();
 		}
-		return result;
-
+		result += " R"
+		if (this.right == null) {
+			result += "[]"
+		} else {
+			result += right.toString();
+		}
+		return "]";
     }
 
-	public String toSimpleString() {
-		String result = "[";
-		while (this.right != null && this.left != null) {
-			if (this.left != null) {
-				result = result + this.value + " [" + this.left;
-				if (this.right != null) {
-					result = result + "]" + " [" + this.right;
-				} else {
-					result = result + "]";
-				}
-			} else {
-				result = result + "]";
-			}
-		}
-		return result;
+    public String toString() {
+    	String result = "";
+    	if (this.left != null) {
+    		result += this.left.toString() + ",";
+    	}
+    	result += this.value;
+    	if (this.right != null) {
+    		result += "," + this.right.toString();
+    	}
+    	return result;
     }
 
     public int depth(){
@@ -101,6 +101,56 @@ public class IntegerTreeNode {
     		return 1 + leftDepth;
     	} else {
     		return 1 + rightDepth;
+    	}
+    }
+
+    public IntegerTreeNode deleteMin() {
+    	if (this.left == null) {
+    		return this.right;
+    	} else {
+    		this.left = deleteMin();
+    		return this;
+    	}
+    }
+
+    public IntegerTreeNode deleteRoot() {
+    	if (right == null && left == null) {
+    		return null;
+    	}
+    	if (this.left == null) {
+    		return this.right;
+    	}
+    	if (this.right == null) {
+    		return this.left;
+    	}
+    	this.value = this.right.getMin();
+    	this.right = this.right.deleteMin();
+    	return this;
+    }
+
+    public void remove(int value) {
+    	/* Precondition: this.value != value */
+    	if (value < this.value) {
+    		if (this.left == null) {
+    			return;
+    		}
+    		if (this.left.value == value) {
+    			this.left = this.left.deleteRoot();
+    			return;
+    		}
+    		this.left.remove(value);
+    		return;
+    	}
+    	if (value > this.value) {
+    		if (this.right == null) {
+    			return;
+    		}
+    		if (this.right.value == value) {
+    			this.right = this.right.deleteRoot();
+    			return;
+    		}
+    		this.right.remove(value);
+    		return;
     	}
     }
 
