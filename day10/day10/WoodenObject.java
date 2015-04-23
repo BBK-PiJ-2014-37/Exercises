@@ -7,5 +7,5 @@ package day10;
 public interface WoodenObject {
 
 	public void burn() {
-		System.out.println("The object is burning")
+		System.out.println("It is burning")
 	}

@@ -154,6 +154,14 @@ public class IntegerTreeNode {
     	}
     }
 
+    public void rebalance() {
+        if(|this.left.depth() - this.right.depth()| >= 2) {
+            if (this.left.depth() > this.right.depth()) {
+                
+            }
+        }
+    }
+
     public static void main(String[] args) {
     	IntegerTreeNode test1 = new IntegerTreeNode(6);
     	test1.add(8);
